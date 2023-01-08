@@ -4,7 +4,7 @@ const reactionSchema = require('./Reaction');
 const reactionSchema = new Schema(
     {
         reactionId: { type: Schema.Types.ObjectId, default: () => new Types.ObjectId() },
-        reactionBody: { type: String, required: true, min: 1, max: 280 },
+        reactionBody: { type: String, required: true, minLength: 1, maxLength: 280 },
         username: { type: String, required: true },
         createdAt: { type: Date, default: Date.now, get: (date) => new Date(date).toLocaleDateString() },
     },

@@ -3,7 +3,7 @@ const reactionSchema = require('./Reaction');
 
 const thoughtSchema = new Schema(
     {
-        throughtText: { type: String, required: true, min: 1, max: 280 },
+        throughtText: { type: String, required: true, minLength: 1, maxLength: 280 },
         createdAt: { type: Date, default: Date.now, get: (date) => new Date(date).toLocaleDateString() },
         username: { type: String, required: true },
         reactions: [reactionSchema],
