@@ -29,12 +29,7 @@ module.exports = {
                     { new: true }
                 );
             })
-            .then((user) =>
-                !user
-                    ? res.status(404).json({
-                        message: 'Thought created, but found no user with that ID',
-                    })
-                    : res.json('Created the thought 🎉')
+            .then(() => res.json('Created the thought 🎉')
             )
             .catch((err) => {
                 console.log(err);
@@ -78,28 +73,24 @@ module.exports = {
     addReaction(req, res) {
         Thought.findOneAndUpdate(
             { _id: req.params.thoughtId },
-            { $addToSet: { reactions: req.body } },
-            { runValidators: true, new: true }
+            { $push: { reactions: req.body } },
         )
-            .then((thought) =>
-                !thought
-                    ? res.status(404).json({ message: 'No thought with this id!' })
-                    : res.json(thought)
-            )
+            .then((thought) => {
+                res.status(200).json(thought);
+            })
+
             .catch((err) => res.status(500).json(err));
     },
     // Remove thought reaction. This method finds the thought based on ID. It then updates the reactions array associated with the thought in question by removing it's reactionId from the reactions array.
     removeReaction(req, res) {
-        thoughts.findOneAndUpdate(
+        Thought.findOneAndUpdate(
             { _id: req.params.thoughtId },
             { $pull: { reactions: { reactionId: req.params.reactionId } } },
-            { runValidators: true, new: true }
         )
-            .then((thought) =>
-                !thought
-                    ? res.status(404).json({ message: 'No thought with this id!' })
-                    : res.json(thought)
-            )
+            .then((thought) => {
+                res.status(200).json(thought);
+            })
+
             .catch((err) => res.status(500).json(err));
     },
 };
