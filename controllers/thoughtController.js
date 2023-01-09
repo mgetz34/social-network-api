@@ -61,7 +61,7 @@ module.exports = {
     // Deletes a thought from the database. Looks for an thought by ID.
     // Then if the thought exists, we look for any users associated with the thought based on he thought ID and update the thought array for the User.
     deleteThought(req, res) {
-        Thought.findOneAndRemove({ _id: req.params.thoughtId })
+        Thought.findOneAndDelete({ _id: req.params.thoughtId })
             .then((thought) =>
                 !thought
                     ? res.status(404).json({ message: 'No thought with this id!' })
@@ -71,13 +71,7 @@ module.exports = {
                         { new: true }
                     )
             )
-            .then((user) =>
-                !user
-                    ? res.status(404).json({
-                        message: 'Thought created but no user with this id!',
-                    })
-                    : res.json({ message: 'Thought successfully deleted!' })
-            )
+            .then(() => res.json({ message: 'Thought successfully deleted!' }))
             .catch((err) => res.status(500).json(err));
     },
     // Adds a reaction to a thought. This method is unique in that we add the entire body of the reaction rather than the ID with the mongodb $addToSet operator.
