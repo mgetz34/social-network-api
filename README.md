@@ -24,7 +24,7 @@ This Application is covered by a: ![License](https://img.shields.io/badge/licens
 
 ## Description
 
-This app utilizes MongoDB and the mongoose ODM package for data queries and storage. An express API utilizing Mongo framework was developed into a simple social media application, allowing users to post thoughts, reactions, and add/remove friends. 
+This app utilizes MongoDB and the mongoose ODM package for data queries and storage. An express API utilizing Mongo framework was developed into a simple social media application, allowing users to post thoughts, reactions, and add/remove friends.
 
 ## Installation
 
@@ -41,4 +41,4 @@ My email address is: mgetz340@gmail.com
 
 ## Video Walk-Thru
 
-![Video](https://drive.google.com/file/d/1b9-h-xH54qS7ChDJYIgd6AQkHXQP7FH2/view)
+https://drive.google.com/file/d/1b9-h-xH54qS7ChDJYIgd6AQkHXQP7FH2/view
