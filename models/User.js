@@ -4,7 +4,7 @@ const userSchema = new Schema(
     {
         username: { type: String, required: true, uniquie: true, trim: true },
         email: { type: String, required: true, uniquie: true, match: /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/ },
-        throughts: [
+        thoughts: [
             {
                 type: Schema.Types.ObjectId,
                 ref: 'Thought',
